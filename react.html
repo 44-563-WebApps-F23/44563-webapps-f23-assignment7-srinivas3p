@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name Speed Check</title>
+</head>
+
+<body>
+    <h1>Your Name Speed Check</h1>
+    <div id="target">Your time: </div>
+    <div id="counter">Count: </div>
+    <button onclick="startTimer()">Start Timer</button>
+    <button id="reactBtn">React</button>
+
+    <script>
+        let reactTime = undefined;
+
+        function recordTime() {
+            reactTime = Date.now();
+            console.log(reactTime);
+        }
+
+        document.getElementById('reactBtn').onclick = recordTime;
+
+        function startTimer() {
+            for (let i = 0; i < 9; i++) {
+                setTimeout(() => {
+                    document.getElementById('counter').innerHTML = 'Count: ' + i;
+                }, (8 - i) * 1000);
+            }
+
+            setTimeout(() => {
+                if (reactTime === undefined) {
+                    document.getElementById('target').innerHTML = 'Too Slow';
+                } else {
+                    const endTime = Date.now();
+                    const elapsedTime = endTime - reactTime;
+                    document.getElementById('target').innerHTML = 'Time was ' + elapsedTime + 'ms';
+                }
+            }, 8000);
+        }
+    </script>
+</body>
+
+</html>
