@@ -195,7 +195,16 @@
             document.getElementById('penalty').textContent = 'Penalty is ' + penalty + '.';
         }
 
-        document.getElementById('help-button').onclick = help;
+        document.addEventListener('DOMContentLoaded', function () {
+            const locationElements = document.querySelectorAll('.location');
+            locationElements.forEach(function (element, index) {
+                element.onclick = function () {
+                    check(index);
+                };
+            });
+
+            document.getElementById('help-button').onclick = help;
+        });
     </script>
 </body>
 
