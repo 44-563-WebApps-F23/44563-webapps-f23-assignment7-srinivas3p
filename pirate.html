@@ -81,39 +81,122 @@
                     Help report
                 </div>
                 <div class="game-field">
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id1" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id2" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id3" onclick="check(x)">
+                    </div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id4" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id5" onclick="check(x)"></div>
 
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id6" onclick="check(x)">
+                    </div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id7" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id8" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id9" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id10" onclick="check(x)"></div>
 
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id11" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id12" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id13" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id14" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id15" onclick="check(x)"></div>
 
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id16" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id17" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id18" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id19" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id20" onclick="check(x)"></div>
 
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
-                    <div class="location" style="background-image: url('cave.jpg');"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id21" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id22" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id23" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id24" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id25" onclick="check(x)"></div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const ids = [];
+        for (let i = 1; i <= 25; i++) {
+            ids.push("id" + i);
+        }
+        let checkCount = 0;
+        let penalty = 0;
+        let lastCheck = 0;
+        let treasureLocation = 5;
+        let trapLocation = 18;
+        let gameOver = false;
+
+        function check(x) {
+            if (gameOver) return;
+            const clickedId = ids[x];
+            const clickedElement = document.getElementById(clickedId);
+
+            if (x === treasureLocation) {
+                clickedElement.style.backgroundImage = "url('treasure.jpg')";
+                gameOver = true;
+                penalty -= 3;
+            } else if (x === trapLocation) {
+                clickedElement.style.backgroundImage = "url('trap.jpg')";
+                gameOver = true;
+                penalty += 4;
+            } else {
+                clickedElement.style.backgroundImage = "url('pirate.jpg')";
+                penalty += 1;
+            }
+
+            checkCount++;
+            document.getElementById('locations').textContent = 'Number of locations checked is ' + checkCount + '.';
+            document.getElementById('penalty').textContent = 'Penalty is ' + penalty + '.';
+
+            const lastRow = Math.floor(lastCheck / 5);
+            const lastCol = lastCheck % 5;
+            const currentRow = Math.floor(x / 5);
+            const currentCol = x % 5;
+            const rowDiff = Math.abs(lastRow - currentRow);
+            const colDiff = Math.abs(lastCol - currentCol);
+
+            let helpResult = '';
+            if ((rowDiff <= 1 && colDiff <= 1) && !(rowDiff === 1 && colDiff === 1)) {
+                helpResult = "Can smell it";
+                penalty += 2;
+            } else if ((rowDiff <= 2 && colDiff <= 2) && !(rowDiff === 2 && colDiff === 2)) {
+                helpResult = "Close Matie";
+            } else {
+                helpResult = "Step Faster";
+            }
+
+            document.getElementById('help').textContent = helpResult;
+            document.getElementById('penalty').textContent = 'Penalty is ' + penalty + '.';
+            lastCheck = x;
+        }
+
+        function help() {
+            const treasureRow = Math.floor(treasureLocation / 5);
+            const treasureCol = treasureLocation % 5;
+            const lastRow = Math.floor(lastCheck / 5);
+            const lastCol = lastCheck % 5;
+
+            let helpResult = '';
+            const rowDiff = Math.abs(lastRow - treasureRow);
+            const colDiff = Math.abs(lastCol - treasureCol);
+
+            if ((rowDiff <= 1 && colDiff <= 1) && !(rowDiff === 1 && colDiff === 1)) {
+                helpResult = "Can smell it";
+                penalty += 2;
+            } else if ((rowDiff <= 2 && colDiff <= 2) && !(rowDiff === 2 && colDiff === 2)) {
+                helpResult = "Close Matie";
+            } else {
+                helpResult = "Step Faster";
+            }
+
+            document.getElementById('help').textContent = helpResult;
+            document.getElementById('penalty').textContent = 'Penalty is ' + penalty + '.';
+        }
+
+        document.getElementById('help-button').onclick = help;
+    </script>
 </body>
 
 </html>
