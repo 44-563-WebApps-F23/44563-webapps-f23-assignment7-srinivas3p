@@ -74,44 +74,42 @@
                 <div class="alert alert-warning" id="penalty">
                     Penalty is zero.
                 </div>
-                <div class="alert alert-primary">
-                    Click for help.
-                </div>
+                <button class="btn btn-primary" onclick="help()">Click for help</button>
                 <div class="alert alert-secondary" id="help">
                     Help report
                 </div>
                 <div class="game-field">
-                    <div class="location" style="background-image: url('cave.jpg');" id="id1" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id2" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id3" onclick="check(x)">
+                    <div class="location" style="background-image: url('cave.jpg');" id="id1" onclick="check(0)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id2" onclick="check(1)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id3" onclick="check(2)">
                     </div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id4" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id5" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id4" onclick="check(3)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id5" onclick="check(4)"></div>
 
-                    <div class="location" style="background-image: url('cave.jpg');" id="id6" onclick="check(x)">
+                    <div class="location" style="background-image: url('cave.jpg');" id="id6" onclick="check(5)">
                     </div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id7" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id8" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id9" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id10" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id7" onclick="check(6)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id8" onclick="check(7)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id9" onclick="check(8)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id10" onclick="check(9)"></div>
 
-                    <div class="location" style="background-image: url('cave.jpg');" id="id11" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id12" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id13" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id14" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id15" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id11" onclick="check(10)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id12" onclick="check(11)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id13" onclick="check(12)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id14" onclick="check(13)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id15" onclick="check(14)"></div>
 
-                    <div class="location" style="background-image: url('cave.jpg');" id="id16" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id17" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id18" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id19" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id20" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id16" onclick="check(15)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id17" onclick="check(16)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id18" onclick="check(17)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id19" onclick="check(18)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id20" onclick="check(19)"></div>
 
-                    <div class="location" style="background-image: url('cave.jpg');" id="id21" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id22" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id23" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id24" onclick="check(x)"></div>
-                    <div class="location" style="background-image: url('cave.jpg');" id="id25" onclick="check(x)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id21" onclick="check(20)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id22" onclick="check(21)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id23" onclick="check(22)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id24" onclick="check(23)"></div>
+                    <div class="location" style="background-image: url('cave.jpg');" id="id25" onclick="check(24)"></div>
                 </div>
             </div>
         </div>
@@ -142,7 +140,7 @@
                 gameOver = true;
                 penalty += 4;
             } else {
-                clickedElement.style.backgroundImage = "url('pirate.jpg')";
+                clickedElement.style.backgroundImage = "url('hat.jpg')";
                 penalty += 1;
             }
 
