@@ -78,6 +78,7 @@
                 <div class="alert alert-secondary" id="help">
                     Help report
                 </div>
+                <div id="button" type="button" class="btn btn-success" onclick="reset()">New Game</div>
                 <div class="game-field">
                     <div class="location" style="background-image: url('cave.jpg');" id="id1" onclick="check(0)"></div>
                     <div class="location" style="background-image: url('cave.jpg');" id="id2" onclick="check(1)"></div>
@@ -203,6 +204,15 @@
 
             document.getElementById('help-button').addEventListener('click', help);
         });
+        function reset() {
+            checkCount = 0;
+            penalty = 0
+            treasureLocation = Math.round(Math.random() * (24));
+            trapLocation = Math.round(Math.random() * (24));
+            document.getElementById("locations").innerHTML = `Number of locations checked is ${checkCount}`
+            document.getElementById("penalty").innerHTML = `Penalty is ${penalty}`
+
+        }
     </script>
 </body>
 
