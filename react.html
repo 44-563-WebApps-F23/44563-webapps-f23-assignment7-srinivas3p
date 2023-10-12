@@ -1,47 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name Speed Check</title>
+  <title>React Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background-color: whitesmoke;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .btn-success {
+      background-color: #a76c28;
+      border-color: #a77628;
+    }
+    .btn-success:hover {
+      background-color: #322188;
+      border-color: #322188;
+    }
+    .btn-success:active {
+      background-color:#322188;
+      border-color: #322188;
+    }
+    #target {
+      font-size: 30px;
+      margin-top: 25px;
+    }
+    #counter {
+      font-size: 20px;
+      margin-top: 15px;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Your Name Speed Check</h1>
-    <div id="target">Your time: </div>
-    <div id="counter">Count: </div>
-    <button onclick="startTimer()">Start Timer</button>
-    <button id="reactBtn">React</button>
 
-    <script>
-        let reactTime = undefined;
+  <div class="container text-center">
+    <h1 class="text-info">Peeka Srinivas Speed Check</h1>
+    <div id="target" class="text-secondary">Your Time:</div>
+    <div id="counter" class="text-danger">Count:</div>
 
-        function recordTime() {
-            reactTime = Date.now();
-            console.log(reactTime);
+    <button type="button" class="btn btn-success mt-3" onclick="startTime()">Start Timer</button>
+    <button type="button" class="btn btn-success mt-3" onclick="recordTime()">React</button>
+  </div>
+  
+  <script> 
+    let reactTime = undefined;
+    function recordTime() {
+      reactTime = Date.now();
+      console.log("Current time in milliseconds: " + reactTime);
+    }
+
+    function startTime() {
+      reactTime = undefined;
+      let endTime = Date.now();
+      let randomCountDown = Math.round(Math.random() * (10 - 2) + 2);
+      for (let i = 0; i < randomCountDown; i++) {
+        setTimeout(function() {
+          document.getElementById('counter').innerHTML = `Count: ${i}`;
+        }, (randomCountDown - i) * 1000);
+      }
+      setTimeout(function() {
+        document.getElementById('counter').innerHTML = `Count: ${randomCountDown}`;
+      }, 8000);
+      setTimeout(function() {
+        if (reactTime == undefined) {
+          document.getElementById("target").innerHTML = "Too Slow";
+        } else {
+          const elapsedTime = Math.abs(endTime - reactTime);
+          document.getElementById("target").innerHTML = "Time was " + elapsedTime;
         }
+      }, 8000);
+    }
+  </script>
 
-        document.getElementById('reactBtn').onclick = recordTime;
-
-        function startTimer() {
-            for (let i = 0; i < 9; i++) {
-                setTimeout(() => {
-                    document.getElementById('counter').innerHTML = 'Count: ' + i;
-                }, (8 - i) * 1000);
-            }
-
-            setTimeout(() => {
-                if (reactTime === undefined) {
-                    document.getElementById('target').innerHTML = 'Too Slow';
-                } else {
-                    const endTime = Date.now();
-                    const elapsedTime = endTime - reactTime;
-                    document.getElementById('target').innerHTML = 'Time was ' + elapsedTime + 'ms';
-                }
-            }, 8000);
-        }
-    </script>
 </body>
-
 </html>
